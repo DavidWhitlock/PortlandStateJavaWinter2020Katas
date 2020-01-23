@@ -14,14 +14,14 @@ accordingly
     <groupId>edu.pdx.cs410J</groupId>
     <version>Winter2020</version>
   </parent>
-  <groupId>edu.pdx.cs410J.YourUserId</groupId>
+  <groupId>edu.pdx.cs410J.whitlock</groupId>
   <artifactId>PortlandStateJavaWinter2020</artifactId>
   <version>Winter2020</version>
 
   <packaging>pom</packaging>
   <name>PSUJavaWinter2020</name>
   <description>Source code written in the Winter 2020 offering of Advanced Programming with Java</description>
-  <url>http://YourGitHubUser.github.io/PortlandStateJavaWinter2020</url>
+  <url>http://DavidWhitlock.github.io/PortlandStateJavaWinter2020</url>
 
   <modules>
     <module>LeapYearKata</module>
@@ -34,7 +34,7 @@ accordingly
   </organization>
   <issueManagement>
     <system>github</system>
-    <url>https://github.com/YourGitHubUser/PortlandStateJavaWinter2020/issues</url>
+    <url>https://github.com/DavidWhitlock/PortlandStateJavaWinter2020/issues</url>
   </issueManagement>
   <licenses>
     <license>
@@ -58,7 +58,7 @@ accordingly
     </developer>
   </developers>
   <scm>
-    <connection>scm:git:git@github.com:YourGitHubUser/PortlandStateJavaWinter2020.git</connection>
+    <connection>scm:git:git@github.com:DavidWhitlock/PortlandStateJavaWinter2020.git</connection>
   </scm>
   <repositories>
     <repository>
@@ -71,7 +71,7 @@ accordingly
     <site>
       <id>gh-pages</id>
       <name>GitHub Pages</name>
-      <url>github:http://YourGitHubUser.github.io/PortlandStateJavaWinter2020/</url>
+      <url>github:http://davidwhitlock.github.io/PortlandStateJavaWinter2020/</url>
     </site>
   </distributionManagement>
 
