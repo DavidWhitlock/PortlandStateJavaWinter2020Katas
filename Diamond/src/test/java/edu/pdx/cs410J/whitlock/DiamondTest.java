@@ -10,11 +10,6 @@ public class DiamondTest
 {
 
   @Test
-  public void canInstantiateKataClass() {
-    new Diamond();
-  }
-
-  @Test
   public void diamondForLetterA() {
     String expected = new DiamondBuilder().
       line("A")
@@ -34,7 +29,6 @@ public class DiamondTest
     assertThat(Diamond.diamondFor('B'), equalTo(expected));
   }
 
-  @Ignore
   @Test
   public void diamondForLetterC() {
     String expected = new DiamondBuilder().
@@ -49,18 +43,66 @@ public class DiamondTest
   }
 
   @Test
+  public void lettersForLinesOfCDiamond() {
+    Diamond diamond = new Diamond('C');
+    assertThat(diamond.getLetterForLine(1), equalTo('A'));
+    assertThat(diamond.getLetterForLine(2), equalTo('B'));
+    assertThat(diamond.getLetterForLine(3), equalTo('C'));
+    assertThat(diamond.getLetterForLine(4), equalTo('B'));
+    assertThat(diamond.getLetterForLine(5), equalTo('A'));
+  }
+
+  @Test
+  public void externalPaddingForLinesOfCDiamond() {
+    Diamond diamond = new Diamond('C');
+    assertThat(diamond.getExternalPaddingForLine(1), equalTo(2));
+    assertThat(diamond.getExternalPaddingForLine(2), equalTo(1));
+    assertThat(diamond.getExternalPaddingForLine(3), equalTo(0));
+    assertThat(diamond.getExternalPaddingForLine(4), equalTo(1));
+    assertThat(diamond.getExternalPaddingForLine(5), equalTo(2));
+  }
+
+  @Test
+  public void internalPaddingForLineOfCDiamond() {
+    Diamond diamond = new Diamond('C');
+    assertThat(diamond.getInternalPaddingForLine(2), equalTo(1));
+    assertThat(diamond.getInternalPaddingForLine(3), equalTo(3));
+    assertThat(diamond.getInternalPaddingForLine(4), equalTo(1));
+  }
+
+  @Test
+  public void firstLineOfCDiamond() {
+    Diamond diamond = new Diamond('C');
+    assertThat(diamond.getLine(1), equalTo("  A  "));
+    assertThat(diamond.getLine(5), equalTo("  A  "));
+  }
+
+  @Test
+  public void secondLineOfCDiamond() {
+    Diamond diamond = new Diamond('C');
+    assertThat(diamond.getLine(2), equalTo(" B B "));
+    assertThat(diamond.getLine(4), equalTo(" B B "));
+  }
+
+  @Test
+  public void middleLineOfCDiamond() {
+    Diamond diamond = new Diamond('C');
+    assertThat(diamond.getLine(3), equalTo("C   C"));
+  }
+
+  @Test
   public void widthForAIs1() {
-    assertThat(Diamond.widthFor('A'), equalTo(1));
+    assertThat(Diamond.diamondSizeFor('A'), equalTo(1));
   }
 
   @Test
   public void widthForBIs3() {
-    assertThat(Diamond.widthFor('B'), equalTo(3));
+    assertThat(Diamond.diamondSizeFor('B'), equalTo(3));
   }
 
   @Test
   public void widthForCIs5() {
-    assertThat(Diamond.widthFor('C'), equalTo(5));
+    assertThat(Diamond.diamondSizeFor('C'), equalTo(5));
   }
 
   private DiamondBuilder line(String line) {
