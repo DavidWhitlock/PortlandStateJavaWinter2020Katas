@@ -25,6 +25,7 @@ accordingly
 
   <modules>
     <module>LeapYearKata</module>
+    <module>Diamond</module>
   </modules>
 
   <inceptionYear>2020</inceptionYear>
