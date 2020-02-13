@@ -61,4 +61,12 @@ public class LagsTest
     assertThat(lags.getBestTotalPrice(), equalTo(18 + 5));
   }
 
+  @Test
+  public void anEvenDeeperTree() {
+    Lags lags = getExampleLags();
+    lags.addFlight("Flight5", 10, 11, 5);
+    lags.addFlight("Flight6", 11, 12, 4);
+    assertThat(lags.getBestTotalPrice(), equalTo(18 + 5 + 4));
+  }
+
 }
