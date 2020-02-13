@@ -43,6 +43,9 @@ public class Lags {
         remainingFlights.removeIf(next -> next.getStart() >= end);
       }
 
+      for(TreeNode root : roots) {
+        root.addDescendentNodesFrom(flights);
+      }
     }
 
     public SortedSet<TreeNode> getRoots() {
@@ -57,6 +60,7 @@ public class Lags {
   class TreeNode implements Comparable<TreeNode> {
 
     private final Flight flight;
+    private final SortedSet<TreeNode> children = new TreeSet<>();
 
     public TreeNode(Flight flight) {
       this.flight = flight;
@@ -71,6 +75,24 @@ public class Lags {
       return flight;
     }
 
+    public SortedSet<TreeNode> getChildren() {
+      return children;
+    }
+
+    public void addDescendentNodesFrom(SortedSet<Flight> allFlights) {
+      for (Flight flight : allFlights) {
+        int start = flight.getStart();
+        if (start >= this.flight.getEnd()) {
+          addChildFor(flight);
+        }
+      }
+
+    }
+
+    private void addChildFor(Flight flight) {
+      this.children.add(new TreeNode(flight));
+
+    }
   }
 
   class Flight implements Comparable<Flight> {

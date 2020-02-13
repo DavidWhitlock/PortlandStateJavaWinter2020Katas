@@ -42,4 +42,17 @@ public class LagsTest
     assertThat(iter.next().getFlight().getName(), equalTo("CO5"));
   }
 
+  @Test
+  public void firstRootHasTwoChildren() {
+    Lags lags = getExampleLags();
+    Lags.Tree tree = lags.getTree();
+    SortedSet<Lags.TreeNode> roots = tree.getRoots();
+    Lags.TreeNode firstRoot = roots.iterator().next();
+    SortedSet<Lags.TreeNode> children = firstRoot.getChildren();
+    assertThat(children, hasSize(2));
+
+    Iterator<Lags.TreeNode> iter = children.iterator();
+    assertThat(iter.next().getFlight().getName(), equalTo("AF515"));
+    assertThat(iter.next().getFlight().getName(), equalTo("BA01"));
+  }
 }
