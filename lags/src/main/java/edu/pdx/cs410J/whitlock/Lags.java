@@ -18,11 +18,11 @@ public class Lags {
     System.exit(1);
   }
 
-  public void addFlight(String name, int start, int end, int price) {
+  void addFlight(String name, int start, int end, int price) {
     this.flights.add(new Flight(name, start, end, price));
   }
 
-  public int getBestTotalPrice() {
+  int getBestTotalPrice() {
     Tree tree = getTree();
     BestTotalPriceCalculator calculator = new BestTotalPriceCalculator();
     tree.visitTreeNodes(calculator);
@@ -36,7 +36,7 @@ public class Lags {
   class Tree {
     private final SortedSet<TreeNode> roots = new TreeSet<>();
 
-    public Tree(SortedSet<Flight> flights) {
+    Tree(SortedSet<Flight> flights) {
       List<Flight> remainingFlights = new ArrayList<>(flights);
       while (!remainingFlights.isEmpty()) {
         Flight flight = remainingFlights.remove(0);
@@ -56,7 +56,7 @@ public class Lags {
       }
     }
 
-    public SortedSet<TreeNode> getRoots() {
+    SortedSet<TreeNode> getRoots() {
       return roots;
     }
 
@@ -74,7 +74,7 @@ public class Lags {
     private final Flight flight;
     private final SortedSet<TreeNode> children = new TreeSet<>();
 
-    public TreeNode(Flight flight) {
+    TreeNode(Flight flight) {
       this.flight = flight;
     }
 
@@ -83,15 +83,15 @@ public class Lags {
       return this.flight.compareTo(other.flight);
     }
 
-    public Flight getFlight() {
+    Flight getFlight() {
       return flight;
     }
 
-    public SortedSet<TreeNode> getChildren() {
+    SortedSet<TreeNode> getChildren() {
       return children;
     }
 
-    public void addDescendentNodesFrom(SortedSet<Flight> allFlights) {
+    void addDescendentNodesFrom(SortedSet<Flight> allFlights) {
       for (Flight flight : allFlights) {
         int start = flight.getStart();
         if (start >= this.flight.getEnd()) {
@@ -110,7 +110,7 @@ public class Lags {
 
     }
 
-    public void visit(TreeNodeVisitor visitor) {
+    void visit(TreeNodeVisitor visitor) {
       visitor.visit(this.flight);
       for (TreeNode child : children) {
         child.visit(visitor);
@@ -125,14 +125,14 @@ public class Lags {
     private final int end;
     private final int price;
 
-    public Flight(String name, int start, int end, int price) {
+    Flight(String name, int start, int end, int price) {
       this.name = name;
       this.start = start;
       this.end = end;
       this.price = price;
     }
 
-    public int getStart() {
+    int getStart() {
       return this.start;
     }
 
@@ -141,15 +141,15 @@ public class Lags {
       return Integer.compare(this.getStart(), other.getStart());
     }
 
-    public int getEnd() {
+    int getEnd() {
       return this.end;
     }
 
-    public String getName() {
+    String getName() {
       return name;
     }
 
-    public int getPrice() {
+    int getPrice() {
       return price;
     }
   }
@@ -159,7 +159,7 @@ public class Lags {
 
     Stack<Flight> stack = new Stack<>();
 
-    public int getBestPrice() {
+    int getBestPrice() {
       return this.bestPrice;
     }
 
