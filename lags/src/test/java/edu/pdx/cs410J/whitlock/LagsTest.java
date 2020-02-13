@@ -2,12 +2,12 @@ package edu.pdx.cs410J.whitlock;
 
 import org.junit.Test;
 
-public class KataTest
+public class LagsTest
 {
 
   @Test
   public void canInstantiateKataClass() {
-    new Kata();
+    new Lags();
   }
 
 }
