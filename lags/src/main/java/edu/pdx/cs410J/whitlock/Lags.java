@@ -99,6 +99,10 @@ public class Lags {
         }
       }
 
+      for(TreeNode child : this.children) {
+        child.addDescendentNodesFrom(allFlights);
+      }
+
     }
 
     private void addChildFor(Flight flight) {

@@ -53,4 +53,12 @@ public class LagsTest
     assertThat(iter.next().getFlight().getName(), equalTo("AF515"));
     assertThat(iter.next().getFlight().getName(), equalTo("BA01"));
   }
+
+  @Test
+  public void aDeeperTree() {
+    Lags lags = getExampleLags();
+    lags.addFlight("Flight5", 10, 11, 5);
+    assertThat(lags.getBestTotalPrice(), equalTo(18 + 5));
+  }
+
 }
