@@ -1,6 +1,5 @@
 package edu.pdx.cs410J.whitlock;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -13,7 +12,6 @@ import static org.hamcrest.Matchers.hasSize;
 public class LagsTest
 {
 
-  @Ignore
   @Test
   public void exampleFromKata() {
 

@@ -24,7 +24,9 @@ public class Lags {
 
   public int getBestTotalPrice() {
     Tree tree = getTree();
-    return 18;
+    BestTotalPriceCalculator calculator = new BestTotalPriceCalculator();
+    tree.visitTreeNodes(calculator);
+    return calculator.getBestPrice();
   }
 
   Tree getTree() {
@@ -32,7 +34,7 @@ public class Lags {
   }
 
   class Tree {
-    SortedSet<TreeNode> roots = new TreeSet<>();
+    private final SortedSet<TreeNode> roots = new TreeSet<>();
 
     public Tree(SortedSet<Flight> flights) {
       List<Flight> remainingFlights = new ArrayList<>(flights);
@@ -48,13 +50,23 @@ public class Lags {
       }
     }
 
+    private void visitTreeNodes(TreeNodeVisitor visitor) {
+      for(TreeNode root : roots) {
+        root.visit(visitor);
+      }
+    }
+
     public SortedSet<TreeNode> getRoots() {
       return roots;
     }
 
-    public void setRoots(SortedSet<TreeNode> roots) {
-      this.roots = roots;
-    }
+  }
+
+  interface TreeNodeVisitor {
+
+    void visit(Flight flight);
+
+    void leave();
   }
 
   class TreeNode implements Comparable<TreeNode> {
@@ -93,6 +105,14 @@ public class Lags {
       this.children.add(new TreeNode(flight));
 
     }
+
+    public void visit(TreeNodeVisitor visitor) {
+      visitor.visit(this.flight);
+      for (TreeNode child : children) {
+        child.visit(visitor);
+      }
+      visitor.leave();
+    }
   }
 
   class Flight implements Comparable<Flight> {
@@ -123,6 +143,39 @@ public class Lags {
 
     public String getName() {
       return name;
+    }
+
+    public int getPrice() {
+      return price;
+    }
+  }
+
+  private class BestTotalPriceCalculator implements TreeNodeVisitor {
+    private int bestPrice = -1;
+
+    Stack<Flight> stack = new Stack<>();
+
+    public int getBestPrice() {
+      return this.bestPrice;
+    }
+
+    @Override
+    public void visit(Flight flight) {
+      stack.push(flight);
+    }
+
+    @Override
+    public void leave() {
+      int currentPrice = 0;
+      for(Flight flight : stack) {
+        currentPrice += flight.getPrice();
+      }
+
+      if (currentPrice > this.bestPrice) {
+        this.bestPrice = currentPrice;
+      }
+
+      stack.pop();
     }
   }
 }
