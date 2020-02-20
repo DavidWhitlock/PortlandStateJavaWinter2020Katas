@@ -24,9 +24,19 @@ public class OCRKata {
   }
 
   int getAccountNumber() {
-    char[][] cell = getCell(0);
-    Number number = Number.getNumberForCell(cell);
-    return number.getNumberValue();
+    int numberOfCells = this.charArrays.get(0).length / 3;
+
+    int accountNumber = 0;
+
+    for (int i = 0; i < numberOfCells; i++) {
+      char[][] cell = getCell(i);
+      Number number = Number.getNumberForCell(cell);
+      int value = number.getNumberValue();
+
+      accountNumber += Math.pow(10.0, numberOfCells - i - 1) * value;
+    }
+
+    return accountNumber;
   }
 
   public char[][] getCell(int cellNumber) {

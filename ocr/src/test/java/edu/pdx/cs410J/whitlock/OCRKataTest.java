@@ -83,4 +83,16 @@ public class OCRKataTest
 
   }
 
+  @Test
+  public void accountNumber12() {
+    OCRKata.Builder builder = new OCRKata.Builder();
+    builder.line("    _ ");
+    builder.line("  | _|");
+    builder.line("  ||_ ");
+
+    OCRKata ocr = builder.build();
+    assertThat(ocr.getAccountNumber(), equalTo(12));
+
+  }
+
 }
