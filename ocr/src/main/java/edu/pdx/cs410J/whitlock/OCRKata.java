@@ -24,7 +24,9 @@ public class OCRKata {
   }
 
   int getAccountNumber() {
-    return 0;
+    char[][] cell = getCell(0);
+    Number number = Number.getNumberForCell(cell);
+    return number.getNumberValue();
   }
 
   public char[][] getCell(int cellNumber) {
@@ -66,7 +68,15 @@ public class OCRKata {
       new char[] {' ', ' ', ' '},
       new char[] {' ', ' ', '|'},
       new char[] {' ', ' ', '|'}
-    });
+    }),
+
+    NUMBER_2(2, new char[][] {
+      new char[] {' ', '_', ' '},
+      new char[] {' ', '_', '|'},
+      new char[] {'|', '_', ' '}
+    })
+
+    ;
 
     private final int numberValue;
     private final char[][] cells;
@@ -97,6 +107,10 @@ public class OCRKata {
         }
       }
       return true;
+    }
+
+    public int getNumberValue() {
+      return numberValue;
     }
   }
 

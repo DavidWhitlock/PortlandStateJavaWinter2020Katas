@@ -60,4 +60,27 @@ public class OCRKataTest
     assertThat(OCRKata.Number.getNumberForCell(cellForNumber1), equalTo(OCRKata.Number.NUMBER_1));
   }
 
+  @Test
+  public void canRecognizeTheNumber2() {
+    char[][] cellForNumber2 = new char[][] {
+      new char[] {' ', '_', ' '},
+      new char[] {' ', '_', '|'},
+      new char[] {'|', '_', ' '}
+    };
+
+    assertThat(OCRKata.Number.getNumberForCell(cellForNumber2), equalTo(OCRKata.Number.NUMBER_2));
+  }
+
+  @Test
+  public void accountNumber1() {
+    OCRKata.Builder builder = new OCRKata.Builder();
+    builder.line("   ");
+    builder.line("  |");
+    builder.line("  |");
+
+    OCRKata ocr = builder.build();
+    assertThat(ocr.getAccountNumber(), equalTo(1));
+
+  }
+
 }
