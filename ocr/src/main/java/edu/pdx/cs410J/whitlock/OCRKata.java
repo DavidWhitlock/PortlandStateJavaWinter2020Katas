@@ -1,6 +1,7 @@
 package edu.pdx.cs410J.whitlock;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -59,4 +60,44 @@ public class OCRKata {
   private void addLine(String line) {
     this.charArrays.add(line.toCharArray());
   }
+
+  enum Number {
+    NUMBER_1(1, new char[][] {
+      new char[] {' ', ' ', ' '},
+      new char[] {' ', ' ', '|'},
+      new char[] {' ', ' ', '|'}
+    });
+
+    private final int numberValue;
+    private final char[][] cells;
+
+    Number(int numberValue, char[][] cells) {
+      this.numberValue = numberValue;
+      this.cells = cells;
+    }
+
+    public static Number getNumberForCell(char[][] cell) {
+      for (Number number : values()) {
+        if (equals(number.cells, cell)) {
+          return number;
+        }
+      }
+
+      return null;
+    }
+
+    private static boolean equals(char[][] array1, char[][] array2) {
+      if (array1.length != array2.length) {
+        return false;
+      }
+
+      for (int i = 0; i < array1.length; i++) {
+        if (!Arrays.equals(array1[i], array2[i])) {
+          return false;
+        }
+      }
+      return true;
+    }
+  }
+
 }

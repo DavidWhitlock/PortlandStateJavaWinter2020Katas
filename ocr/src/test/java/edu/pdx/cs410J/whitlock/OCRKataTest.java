@@ -49,4 +49,15 @@ public class OCRKataTest
     assertThat(cell[2], equalTo(new char[] {'|', '_', ' '}));
   }
 
+  @Test
+  public void canRecognizeTheNumber1() {
+    char[][] cellForNumber1 = new char[][] {
+      new char[] {' ', ' ', ' '},
+      new char[] {' ', ' ', '|'},
+      new char[] {' ', ' ', '|'}
+    };
+
+    assertThat(OCRKata.Number.getNumberForCell(cellForNumber1), equalTo(OCRKata.Number.NUMBER_1));
+  }
+
 }
