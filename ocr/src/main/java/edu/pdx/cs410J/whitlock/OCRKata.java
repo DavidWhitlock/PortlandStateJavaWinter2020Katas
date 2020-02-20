@@ -6,7 +6,7 @@ package edu.pdx.cs410J.whitlock;
  * Use IntelliJ's "Refactor | Rename..." command to change the name of this
  * class (and its tests).
  */
-public class Kata {
+public class OCRKata {
                                                                                     
 
   public static void main(String[] args) {

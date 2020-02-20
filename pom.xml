@@ -27,6 +27,7 @@ accordingly
     <module>LeapYearKata</module>
     <module>Diamond</module>
     <module>lags</module>
+    <module>ocr</module>
   </modules>
 
   <inceptionYear>2020</inceptionYear>
