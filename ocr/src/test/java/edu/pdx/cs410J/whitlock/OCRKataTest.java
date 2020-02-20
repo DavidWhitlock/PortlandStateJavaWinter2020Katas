@@ -21,4 +21,18 @@ public class OCRKataTest
     assertThat(ocr.getAccountNumber(), equalTo(123456789));
   }
 
+  @Test
+  public void ocrFirstCellOf1() {
+    OCRKata.Builder builder = new OCRKata.Builder();
+    builder.line("   ");
+    builder.line("  |");
+    builder.line("  |");
+
+    OCRKata ocr = builder.build();
+    char[][] cell = ocr.getCell(0);
+    assertThat(cell[0], equalTo(new char[] {' ', ' ', ' '}));
+    assertThat(cell[1], equalTo(new char[] {' ', ' ', '|'}));
+    assertThat(cell[2], equalTo(new char[] {' ', ' ', '|'}));
+  }
+
 }
