@@ -35,4 +35,18 @@ public class OCRKataTest
     assertThat(cell[2], equalTo(new char[] {' ', ' ', '|'}));
   }
 
+  @Test
+  public void ocrFirstCellOf2() {
+    OCRKata.Builder builder = new OCRKata.Builder();
+    builder.line("    _ ");
+    builder.line("  | _|");
+    builder.line("  ||_ ");
+
+    OCRKata ocr = builder.build();
+    char[][] cell = ocr.getCell(1);
+    assertThat(cell[0], equalTo(new char[] {' ', '_', ' '}));
+    assertThat(cell[1], equalTo(new char[] {' ', '_', '|'}));
+    assertThat(cell[2], equalTo(new char[] {'|', '_', ' '}));
+  }
+
 }

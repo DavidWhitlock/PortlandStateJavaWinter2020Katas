@@ -31,15 +31,16 @@ public class OCRKata {
 
     for (int row = 0 ; row <= 2; row++) {
       for (int column = 0; column <= 2; column++) {
-        setValueOfCell(cell, row, column);
+        setValueOfCell(cell, cellNumber, row, column);
       }
     }
 
     return cell;
   }
 
-  private void setValueOfCell(char[][] cell, int row, int column) {
-    cell[row][column] = charArrays.get(row)[column];
+  private void setValueOfCell(char[][] cell, int cellNumber, int row, int column) {
+    int arrayColumn = (3 * cellNumber) + column;
+    cell[row][column] = charArrays.get(row)[arrayColumn];
   }
 
   static class Builder {
