@@ -1,6 +1,5 @@
 package edu.pdx.cs410J.whitlock;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -10,7 +9,6 @@ public class OCRKataTest
 {
 
   @Test
-  @Ignore
   public void exampleFromKata() {
     OCRKata.Builder builder = new OCRKata.Builder();
     builder.line("    _  _     _  _  _  _  _ ");
@@ -94,5 +92,84 @@ public class OCRKataTest
     assertThat(ocr.getAccountNumber(), equalTo(12));
 
   }
+
+  @Test
+  public void canRecognizeTheNumber3() {
+    char[][] cellForNumber3 = new char[][] {
+      new char[] {' ', '_', ' '},
+      new char[] {' ', '_', '|'},
+      new char[] {' ', '_', '|'}
+    };
+
+    assertThat(OCRKata.Number.getNumberForCell(cellForNumber3), equalTo(OCRKata.Number.NUMBER_3));
+  }
+
+  @Test
+  public void canRecognizeTheNumber4() {
+    char[][] cellForNumber4 = new char[][] {
+      new char[] {' ', ' ', ' '},
+      new char[] {'|', '_', '|'},
+      new char[] {' ', ' ', '|'}
+    };
+
+    assertThat(OCRKata.Number.getNumberForCell(cellForNumber4), equalTo(OCRKata.Number.NUMBER_4));
+  }
+
+  @Test
+  public void canRecognizeTheNumber5() {
+    char[][] cellForNumber5 = new char[][] {
+      new char[] {' ', '_', ' '},
+      new char[] {'|', '_', ' '},
+      new char[] {' ', '_', '|'}
+    };
+
+    assertThat(OCRKata.Number.getNumberForCell(cellForNumber5), equalTo(OCRKata.Number.NUMBER_5));
+  }
+
+  @Test
+  public void canRecognizeTheNumber6() {
+    char[][] cellForNumber6 = new char[][] {
+      new char[] {' ', '_', ' '},
+      new char[] {'|', '_', ' '},
+      new char[] {'|', '_', '|'}
+    };
+
+    assertThat(OCRKata.Number.getNumberForCell(cellForNumber6), equalTo(OCRKata.Number.NUMBER_6));
+  }
+
+  @Test
+  public void canRecognizeTheNumber7() {
+    char[][] cellForNumber7 = new char[][] {
+      new char[] {' ', '_', ' '},
+      new char[] {' ', ' ', '|'},
+      new char[] {' ', ' ', '|'}
+    };
+
+    assertThat(OCRKata.Number.getNumberForCell(cellForNumber7), equalTo(OCRKata.Number.NUMBER_7));
+  }
+
+  @Test
+  public void canRecognizeTheNumber8() {
+    char[][] cellForNumber8 = new char[][] {
+      new char[] {' ', '_', ' '},
+      new char[] {'|', '_', '|'},
+      new char[] {'|', '_', '|'}
+    };
+
+    assertThat(OCRKata.Number.getNumberForCell(cellForNumber8), equalTo(OCRKata.Number.NUMBER_8));
+  }
+
+  @Test
+  public void canRecognizeTheNumber9() {
+    char[][] cellForNumber9 = new char[][] {
+      new char[] {' ', '_', ' '},
+      new char[] {'|', '_', '|'},
+      new char[] {' ', '_', '|'}
+    };
+
+    assertThat(OCRKata.Number.getNumberForCell(cellForNumber9), equalTo(OCRKata.Number.NUMBER_9));
+  }
+
+
 
 }

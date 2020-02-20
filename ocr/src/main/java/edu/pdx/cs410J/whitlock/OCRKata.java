@@ -84,7 +84,49 @@ public class OCRKata {
       new char[] {' ', '_', ' '},
       new char[] {' ', '_', '|'},
       new char[] {'|', '_', ' '}
-    })
+    }),
+
+    NUMBER_3(3, new char[][] {
+      new char[] {' ', '_', ' '},
+      new char[] {' ', '_', '|'},
+      new char[] {' ', '_', '|'}
+    }),
+
+    NUMBER_4(4, new char[][] {
+      new char[] {' ', ' ', ' '},
+      new char[] {'|', '_', '|'},
+      new char[] {' ', ' ', '|'}
+    }),
+
+    NUMBER_5(5, new char[][] {
+      new char[] {' ', '_', ' '},
+      new char[] {'|', '_', ' '},
+      new char[] {' ', '_', '|'}
+    }),
+
+    NUMBER_6(6, new char[][] {
+      new char[] {' ', '_', ' '},
+      new char[] {'|', '_', ' '},
+      new char[] {'|', '_', '|'}
+    }),
+
+    NUMBER_7(7, new char[][] {
+      new char[] {' ', '_', ' '},
+      new char[] {' ', ' ', '|'},
+      new char[] {' ', ' ', '|'}
+    }),
+
+    NUMBER_8(8, new char[][] {
+      new char[] {' ', '_', ' '},
+      new char[] {'|', '_', '|'},
+      new char[] {'|', '_', '|'}
+    }),
+
+    NUMBER_9(9, new char[][] {
+      new char[] {' ', '_', ' '},
+      new char[] {'|', '_', '|'},
+      new char[] {' ', '_', '|'}
+    }),
 
     ;
 
